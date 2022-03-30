@@ -1,0 +1,77 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script
+      language="javascript"
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.min.js"
+    ></script>
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+
+  <body>
+    <div class="header">
+      <a href="/" class="logoHeader"><img src="logo.png" alt="" /></a>
+      <span class="title">Ulysses16</span>
+      <div>
+        <a href="/"><span class="active">Home</span></a>
+        <a href="/about.html"><span>About</span></a>
+      </div>
+    </div>
+    <form action="result.html" method="get" class="formClass">
+      <div class="formClassChild">
+        <label class="formLabels"
+          >keep the population less than 500 (Performance Issues)</label
+        >
+        <input
+          required
+          type="number"
+          name="populationSize"
+          placeholder="Enter Population Size"
+          value="100"
+        />
+      </div>
+      <div class="formClassChild">
+        <input
+          required
+          type="number"
+          step=".01"
+          name="gamma"
+          placeholder="Enter Light Absorption (Gamma)"
+          value="0.03"
+        />
+      </div>
+      <div class="formClassChild">
+        <input
+          required
+          type="number"
+          step=".01"
+          name="beta"
+          placeholder="Enter Beta (beta)"
+          value="1"
+        />
+      </div>
+      <div class="formClassChild">
+        <label class="formLabels"
+          >keep the moves less than 100 (Performance Issues)</label
+        >
+        <input
+          required
+          type="number"
+          name="totalMoves"
+          placeholder="Enter Total Moves"
+          value="20"
+        />
+      </div>
+
+      <input type="hidden" name="type" id="type" />
+      <input class="submitBtn" type="submit" />
+    </form>
+
+    <script>
+      const params = new URL(document.location).searchParams;
+      const city_type = params.get("type");
+      document.getElementById("type").value = city_type;
+    </script>
+  </body>
+</html>
