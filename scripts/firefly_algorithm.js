@@ -171,12 +171,15 @@ function setup() {
 }
 
 function draw() {
-  background(0);
+  background(1);
 
   //---------------------Every Combination--------------------------
-  fill(255, 255, 255);
+  stroke(255, 255, 255);
+  strokeWeight(1);
+  noFill();
   for (var i = 0; i < cities.length; i++) {
     ellipse(cities[i].x, cities[i].y, 10, 10);
+    textSize(18);
     text(i, cities[i].x, cities[i].y, 70, 80);
   }
 
@@ -213,24 +216,36 @@ function draw() {
   var s1 = "";
   var s2 = "";
   for (let i = 0; i < order1.length; i++) {
-    s1 += order1[i];
+    s1 += order1[i] + ",";
     s2 += bestEver1[i] + ",";
   }
   fill(255);
-  var percent = (count1 / totalPermutations) * 100;
+
+  var n1 = new bigDecimal(count1);
+  var n2 = new bigDecimal(totalPermutations);
+  var quotient = n1.divide(n2).getValue();
+  var percent = quotient * 100;
+  // var percent = (count1 / totalPermutations) * 100;
+
   textSize(30);
-  text(nf(percent, 0, 2) + " % Completed", 20, height - 90);
+  if (totalCities < 10) {
+    text(nf(percent, 0, 2) + " % Completed", 20, height - 90);
+  } else {
+    text(nf(percent, 0, 8) + " % Completed", 20, height - 90);
+  }
+
   textSize(18);
   text("Global Best: " + s2, 20, height - 60);
   textSize(18);
-  text("Current Combination: " + s1, 20, height - 30);
+  text("Local Best: " + s1, 20, height - 30);
   textSize(25);
   fill(255, 0, 0);
   text("Brute Force", 20, height);
 
   //--------------------Firefly Algorithm---------------------------
-  fill(255, 255, 255);
-  strokeWeight(0);
+  stroke(255, 255, 255);
+  strokeWeight(1);
+  noFill();
   for (var i = 0; i < totalCities; i++) {
     ellipse(cities[i].x + 800, cities[i].y, 10, 10);
     textSize(18);
@@ -262,13 +277,13 @@ function draw() {
   var s1 = "";
   var s2 = "";
   for (let i = 0; i < order.length; i++) {
-    s1 += currentCombination[i];
+    s1 += currentCombination[i] + ",";
     s2 += bestEver[i] + ",";
   }
   fill(255);
   text("Global Best: " + s2, 850, height - 80);
   textSize(18);
-  text("Current Combination: " + s1, 850, height - 50);
+  text("Local Best: " + s1, 850, height - 50);
   textSize(25);
   fill(0, 255, 0);
   text("FireFly Algorithm", 850, height - 10);
