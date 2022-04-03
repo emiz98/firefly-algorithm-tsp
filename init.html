@@ -21,49 +21,64 @@
       </div>
     </div>
     <form action="result.html" method="get" class="formClass">
-      <div class="formClassChild">
-        <label class="formLabels"
-          >keep the population less than 500 (Performance Issues)</label
-        >
-        <input
-          required
-          type="number"
-          name="populationSize"
-          placeholder="Enter Population Size"
-          value="100"
-        />
+      <span class="title2" id="title2"></span>
+      <div class="formRow">
+        <span>Population:</span>
+        <div class="formClassChild">
+          <label class="formLabels"
+            >keep the population less than 500 (Performance Issues)</label
+          >
+          <input
+            required
+            type="number"
+            name="populationSize"
+            placeholder="Enter Population Size"
+            value="150"
+          />
+        </div>
       </div>
-      <div class="formClassChild">
-        <input
-          required
-          type="number"
-          step=".01"
-          name="gamma"
-          placeholder="Enter Light Absorption (Gamma)"
-          value="0.03"
-        />
+
+      <div class="formRow">
+        <span>Gamma:</span>
+        <div class="formClassChild">
+          <input
+            required
+            type="number"
+            step=".01"
+            name="gamma"
+            placeholder="Enter Light Absorption (Gamma)"
+            value="0.03"
+          />
+        </div>
       </div>
-      <div class="formClassChild">
-        <input
-          required
-          type="number"
-          step=".01"
-          name="beta"
-          placeholder="Enter Beta (beta)"
-          value="1"
-        />
+
+      <div class="formRow">
+        <span>Beta:</span>
+        <div class="formClassChild">
+          <input
+            required
+            type="number"
+            step=".01"
+            name="beta"
+            placeholder="Enter Beta (beta)"
+            value="1"
+          />
+        </div>
       </div>
-      <div class="formClassChild">
-        <label class="formLabels"
-          >keep the moves less than 100 (Performance Issues)</label
-        >
-        <input
-          required
-          type="number"
-          name="totalMoves"
-          placeholder="Enter Total Moves"
-          value="20"
-        />
+      <div class="formRow">
+        <span>Total Moves:</span>
+        <div class="formClassChild">
+          <label class="formLabels"
+            >keep the moves less than 100 (Performance Issues)</label
+          >
+          <input
+            required
+            type="number"
+            name="totalMoves"
+            placeholder="Enter Total Moves"
+            value="20"
+          />
+        </div>
       </div>
 
       <input type="hidden" name="type" id="type" />
@@ -75,6 +90,7 @@
       const city_type = params.get("type");
       document.getElementById("type").value = city_type;
       document.getElementById("title").innerHTML = city_type;
+      document.getElementById("title2").innerHTML = city_type;
     </script>
   </body>
 </html>

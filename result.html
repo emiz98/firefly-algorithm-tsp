@@ -20,12 +20,17 @@
         <a href="/about.html"><span>About</span></a>
       </div>
     </div>
+    <button onclick="showGraph()" class="metricsBtn" id="metricsBtn">
+      Metrics
+    </button>
+    <div class="metrics" id="chart"></div>
 
+    <script src="https://cdn.plot.ly/plotly-2.9.0.min.js"></script>
     <script src="https://unpkg.com/js-big-decimal@1.3.1/dist/web/js-big-decimal.min.js"></script>
-    <!-- <script src="https://peterolson.github.io/BigInteger.js/BigInteger.min.js"></script> -->
     <script type="text/javascript" src="cities/cities.js"></script>
     <script type="text/javascript" src="scripts/helpers_bruteForce.js"></script>
     <script type="text/javascript" src="scripts/helpers_firefly.js"></script>
     <script type="text/javascript" src="scripts/firefly_algorithm.js"></script>
+    <script src="scripts/helpers_graph.js"></script>
   </body>
 </html>

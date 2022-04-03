@@ -19,61 +19,78 @@
       </div>
     </div>
     <form action="result.html" method="get" class="formClass">
-      <div class="formClassChild">
-        <label class="formLabels"
-          >keep the cities less than 30 (Performance Issues)</label
-        >
-        <input
-          required
-          type="number"
-          name="total_cities"
-          placeholder="Enter Total Number of Cities"
-          value="15"
-        />
+      <div class="formRow">
+        <span>Total Cities:</span>
+        <div class="formClassChild">
+          <label class="formLabels"
+            >keep the cities less than 30 (Performance Issues)</label
+          >
+          <input
+            required
+            type="number"
+            name="total_cities"
+            placeholder="Enter Total Number of Cities"
+            value="10"
+          />
+        </div>
       </div>
-      <div class="formClassChild">
-        <label class="formLabels"
-          >keep the population less than 500 (Performance Issues)</label
-        >
-        <input
-          required
-          type="number"
-          name="populationSize"
-          placeholder="Enter Population Size"
-          value="100"
-        />
+
+      <div class="formRow">
+        <span>Population:</span>
+        <div class="formClassChild">
+          <label class="formLabels"
+            >keep the population less than 500 (Performance Issues)</label
+          >
+          <input
+            required
+            type="number"
+            name="populationSize"
+            placeholder="Enter Population Size"
+            value="100"
+          />
+        </div>
       </div>
-      <div class="formClassChild">
-        <input
-          required
-          type="number"
-          step=".01"
-          name="gamma"
-          placeholder="Enter Light Absorption (Gamma)"
-          value="0.03"
-        />
+
+      <div class="formRow">
+        <span>Gamma:</span>
+        <div class="formClassChild">
+          <input
+            required
+            type="number"
+            step=".01"
+            name="gamma"
+            placeholder="Enter Light Absorption (Gamma)"
+            value="0.03"
+          />
+        </div>
       </div>
-      <div class="formClassChild">
-        <input
-          required
-          type="number"
-          step=".01"
-          name="beta"
-          placeholder="Enter Beta (beta)"
-          value="1"
-        />
+      <div class="formRow">
+        <span>Beta:</span>
+        <div class="formClassChild">
+          <input
+            required
+            type="number"
+            step=".01"
+            name="beta"
+            placeholder="Enter Beta (beta)"
+            value="1"
+          />
+        </div>
       </div>
-      <div class="formClassChild">
-        <label class="formLabels"
-          >keep the moves less than 100 (Performance Issues)</label
-        >
-        <input
-          required
-          type="number"
-          name="totalMoves"
-          placeholder="Enter Total Moves"
-          value="20"
-        />
+      <div class="formRow">
+        <span>Total Moves:</span>
+        <div class="formClassChild">
+          <label class="formLabels"
+            >keep the moves less than 100 (Performance Issues)</label
+          >
+          <input
+            required
+            type="number"
+            name="totalMoves"
+            placeholder="Enter Total Moves"
+            value="20"
+          />
+        </div>
       </div>
       <input type="hidden" name="type" value="random" />
       <input class="submitBtn" type="submit" />

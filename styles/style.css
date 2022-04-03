@@ -43,6 +43,10 @@ body {
   align-items: center;
 }
 
+canvas {
+  margin-top: 28px;
+}
+
 .header {
   padding: 20px 40px;
   display: flex;
@@ -75,8 +79,8 @@ body {
 .header > div > a {
   text-decoration: none;
   color: white;
-  margin-left: 50px;
-  font-size: 16px;
+  margin-right: 50px;
+  font-size: 20px;
   text-transform: uppercase;
 }
 
@@ -148,6 +152,18 @@ body {
   border-radius: 5px;
 }
 
+.formRow {
+  display: flex;
+  align-items: center;
+}
+.formRow > span {
+  width: 100px;
+  margin-right: 20px;
+  color: rgb(210, 210, 210);
+  margin-top: 30px;
+  font-weight: 400;
+}
+
 .submitBtn {
   background-color: rgb(192, 189, 1);
   margin-top: 30px;
@@ -157,6 +173,7 @@ body {
   padding: 15px;
   width: 500px;
   border: none;
+  margin-left: 120px;
   transition: 200ms all ease-in-out;
 }
 
@@ -193,6 +210,7 @@ body {
 .profileContainer {
   display: flex;
   align-items: center;
+  justify-content: center;
   margin: 100px 0 20px 0;
 }
 .linkedin {
@@ -218,4 +236,86 @@ body {
   /* text-transform: uppercase; */
   font-size: 30px;
   font-weight: 700;
+}
+
+.metricsBtn {
+  position: absolute;
+  top: 15%;
+  right: 5%;
+  border-radius: 20px;
+  padding: 5px 20px;
+  border: 1px solid;
+  border-color: white;
+  color: white;
+  background-color: transparent;
+  font-size: 20px;
+  min-width: 120px;
+}
+.metricsBtn:hover {
+  background-color: rgb(251, 249, 78);
+  cursor: pointer;
+  color: black;
+}
+.metrics {
+  display: none;
+  position: absolute;
+}
+
+/* MediaQ */
+@media screen and (max-width: 1000px) {
+  .logoHeader {
+    width: 50%;
+  }
+  .header {
+    padding: 50px 60px;
+  }
+  .header > div > a {
+    font-size: 40px;
+  }
+  .aboutPageContainer {
+    width: 90%;
+    margin-top: 100px;
+  }
+  .optionBtn {
+    border: 1px solid;
+    padding: 20px 30px;
+    border-color: rgb(226, 222, 0);
+    border-radius: 10px;
+    margin-bottom: 50px;
+    text-decoration: none;
+    font-size: 3rem;
+    color: white;
+  }
+  .title {
+    visibility: hidden;
+  }
+  .title2 {
+    font-size: 60px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .formClassChild > input {
+    width: 40rem;
+    height: 5rem;
+    font-size: 40px;
+    padding: 15px;
+    outline: none;
+    border-radius: 5px;
+  }
+  .formLabels {
+    font-size: 1.5rem;
+  }
+  .submitBtn {
+    font-size: 35px;
+    font-weight: 600;
+    border-radius: 5px;
+    padding: 15px;
+    width: 40rem;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .title2 {
+    visibility: hidden;
+  }
 }

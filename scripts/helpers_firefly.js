@@ -86,7 +86,6 @@ function getBrightestFirefly() {
     var d = calcDistance(cities, population[i]);
     currentCombination = population[i];
     if (d < recordDistance) {
-      stability = 0;
       recordDistance = d;
       bestEver = population[i].slice();
     }
@@ -109,7 +108,8 @@ function calcDistance(points, order) {
 
 function calculateFitness(order) {
   var dist = calcDistance(cities, order);
-  var fitnessEUC = 1 / (pow(dist, 8) + 1);
+  // var fitnessEUC = 1 / (pow(dist, 8) + 1);
+  var fitnessEUC = 1 / (dist + 1);
   return fitnessEUC;
 }
 

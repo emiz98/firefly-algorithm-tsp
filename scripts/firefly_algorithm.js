@@ -70,7 +70,7 @@ beta0 = beta;
 totalMoves = moves;
 
 function setup() {
-  createCanvas(windowWidth - 20, windowHeight - 50);
+  createCanvas(windowWidth - 100, windowHeight - 150);
 
   if (type != "random") {
     for (let city = 0; city < cities1.length; city++) {
@@ -130,7 +130,7 @@ function setup() {
       );
       var v = createVector(
         (cities1[j].x / 5) * 2 + 20,
-        (cities1[j].y / 5) * 3 + 50
+        getInvertedYCoord((cities1[j].y / 5) * 3 + 350)
       );
       cities[j] = v;
       order[j] = j;
@@ -168,6 +168,7 @@ function setup() {
   }
   bestEver = order.slice();
   recordDistance = calcDistance(cities, population[0]);
+  plotGraph();
 }
 
 function draw() {
@@ -229,27 +230,27 @@ function draw() {
 
   textSize(30);
   if (totalCities < 10) {
-    text(nf(percent, 0, 2) + " % Completed", 20, height - 90);
+    text(nf(percent, 0, 2) + " % Completed", 20, height - 100);
   } else {
-    text(nf(percent, 0, 8) + " % Completed", 20, height - 90);
+    text(nf(percent, 0, 4) + " % Completed", 20, height - 100);
   }
 
   textSize(18);
-  text("Global Best: " + s2, 20, height - 60);
+  text("Global Best: " + s2, 20, height - 70);
   textSize(18);
-  text("Local Best: " + s1, 20, height - 30);
-  textSize(25);
+  text("Local Best: " + s1, 20, height - 45);
+  textSize(28);
   fill(255, 0, 0);
-  text("Brute Force", 20, height);
+  text("Brute Force", 20, height - 10);
 
   //--------------------Firefly Algorithm---------------------------
   stroke(255, 255, 255);
   strokeWeight(1);
   noFill();
   for (var i = 0; i < totalCities; i++) {
-    ellipse(cities[i].x + 800, cities[i].y, 10, 10);
+    ellipse(cities[i].x + 1000, cities[i].y, 10, 10);
     textSize(18);
-    text(i, cities[i].x + 800, cities[i].y, 70, 80);
+    text(i, cities[i].x + 1000, cities[i].y, 70, 80);
   }
 
   stroke(0, 255, 0);
@@ -258,7 +259,7 @@ function draw() {
   beginShape();
   for (var i = 0; i < totalCities; i++) {
     var n = bestEver[i];
-    vertex(cities[n].x + 800, cities[n].y);
+    vertex(cities[n].x + 1000, cities[n].y);
   }
   endShape();
 
@@ -268,7 +269,7 @@ function draw() {
   beginShape();
   for (var i = 0; i < currentCombination.length; i++) {
     var n = currentCombination[i];
-    vertex(cities[n].x + 800, cities[n].y);
+    vertex(cities[n].x + 1000, cities[n].y);
   }
   endShape();
 
@@ -281,12 +282,12 @@ function draw() {
     s2 += bestEver[i] + ",";
   }
   fill(255);
-  text("Global Best: " + s2, 850, height - 80);
+  text("Global Best: " + s2, 1000, height - 80);
   textSize(18);
-  text("Local Best: " + s1, 850, height - 50);
+  text("Local Best: " + s1, 1000, height - 50);
   textSize(25);
   fill(0, 255, 0);
-  text("FireFly Algorithm", 850, height - 10);
+  text("FireFly Algorithm", 1000, height - 10);
 
   FireFly();
 
@@ -306,7 +307,6 @@ function FireFly() {
       movement(population[i], population[randomIndex]);
     }
   }
-
   normalizeFitness();
   pickNewPopulation();
   getBrightestFirefly();
@@ -341,4 +341,8 @@ function BruteForce() {
   var endArray = order1.splice(largestI + 1);
   endArray.reverse();
   order1 = order1.concat(endArray);
+}
+
+function getInvertedYCoord(y_coord) {
+  return windowHeight - y_coord;
 }
