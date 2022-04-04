@@ -86,3 +86,9 @@ function showGraph() {
     document.getElementById("metricsBtn").innerHTML = "Metrics";
   }
 }
+
+document.onkeydown = function (e) {
+  if (e.which == 27) {
+    showGraph();
+  }
+};

@@ -88,6 +88,10 @@ function getBrightestFirefly() {
     if (d < recordDistance) {
       recordDistance = d;
       bestEver = population[i].slice();
+      reShufflePopulation();
+    } else {
+      stability++;
+      reShufflePopulation();
     }
   }
 }
@@ -120,5 +124,69 @@ function normalizeFitness() {
   }
   for (var i = 0; i < nextPopulationFitness.length; i++) {
     nextPopulationFitness[i] = nextPopulationFitness[i] / sum;
+  }
+}
+
+function reShufflePopulation() {
+  if (stability / populationSize > 5) {
+    stability = 0;
+    population = [];
+    nextGenerationGenetic();
+  }
+}
+
+function nextGenerationGenetic() {
+  var geneticPopulation = [];
+  for (var i = 0; i < populationSize; i++) {
+    // var order = pickOne(nextPopulation, nextPopulationFitness);
+    var orderA = pickOne(nextPopulation, nextPopulationFitness);
+    var orderB = pickOne(nextPopulation, nextPopulationFitness);
+    var order = crossOver(orderA, orderB);
+    mutate(order, 0.1);
+    geneticPopulation[i] = order;
+  }
+  population = geneticPopulation;
+}
+
+function pickOne(list, prob) {
+  var index = 0;
+  var r = random(1);
+
+  while (r > 0) {
+    r = r - prob[index];
+    index++;
+  }
+  index--;
+  if (index == list.length) {
+    return list[index - 1].slice();
+  } else if (index == 0) {
+    return list[index].slice();
+  } else {
+    return list[index].slice();
+  }
+}
+
+function crossOver(orderA, orderB) {
+  var start = floor(random(orderA.length));
+  var end = floor(random(start + 1, orderA.length));
+  var neworder = orderA.slice(start, end);
+
+  for (var i = 0; i < orderB.length; i++) {
+    var city = orderB[i];
+    if (!neworder.includes(city)) {
+      neworder.push(city);
+    }
+  }
+
+  return neworder;
+}
+
+function mutate(order, mutationRate) {
+  for (var i = 0; i < totalCities; i++) {
+    if (random(1) < mutationRate) {
+      var indexA = floor(random(order.length));
+      var indexB = (indexA + 1) % totalCities;
+      swap(order, indexA, indexB);
+    }
   }
 }

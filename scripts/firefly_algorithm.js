@@ -23,7 +23,7 @@ var bestEver1;
 
 // --------------FireFly Algorithm--------------------
 
-var iterations = 1;
+var iterations = 200;
 var iterationStart = 0;
 
 var order = [];
@@ -291,13 +291,13 @@ function draw() {
 
   FireFly();
 
-  //   if (iterationStart == iterations) {
-  //     noLoop();
-  //   }
+  // if (iterationStart == iterations) {
+  //   noLoop();
+  // }
 }
 
 function FireFly() {
-  iterationStart++;
+  // iterationStart++;
   for (let i = 0; i < population.length; i++) {
     var bestFirefly = getMostAttractiveFirefly(population[i], i);
     if (bestFirefly != null) {
