@@ -15,10 +15,21 @@
       <span class="title">Random Cities</span>
       <div>
         <a href="/"><span class="active">Home</span></a>
-        <a href="/about.html"><span>About</span></a>
+        <a href="/about.html"><span>About</span></a
+        ><a
+          href="https://github.com/emiz98/firefly-algorithm-tsp.git"
+          target="_blank"
+        >
+          <img class="github" src="/github.png" alt="" />
+        </a>
       </div>
     </div>
-    <form action="result.html" method="get" class="formClass">
+    <form
+      action="result.html"
+      method="get"
+      class="formClass"
+      style="margin-top: 5%"
+    >
       <div class="formRow">
         <span>Total Cities:</span>
         <div class="formClassChild">
@@ -90,6 +101,15 @@
             placeholder="Enter Total Moves"
             value="20"
           />
+        </div>
+      </div>
+      <div class="formRow">
+        <span style="width: 100%; margin-right: 30px">Genetic Crossover</span>
+        <div class="formClassChild">
+          <label class="switch">
+            <input name="isGenetic" type="checkbox" />
+            <span class="slider round"></span>
+          </label>
         </div>
       </div>
       <input type="hidden" name="type" value="random" />

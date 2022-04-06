@@ -5,6 +5,7 @@ const popSize = params.get("populationSize");
 const gamma = params.get("gamma");
 const beta = params.get("beta");
 const moves = params.get("totalMoves");
+const isGenetic = params.get("isGenetic");
 document.getElementById("title").innerHTML = type;
 if (type == "ulysses16") {
   cities1 = ulysses16;
@@ -12,7 +13,6 @@ if (type == "ulysses16") {
 if (type == "ulysses22") {
   cities1 = ulysses22;
 }
-
 // -------------Brute Force--------------------
 var order1 = [];
 var totalPermutations;
@@ -62,7 +62,12 @@ if (type != "random") {
   DATASET_MAX_Y = cities1[0].y; // 84.32
 }
 
+var genetic = false;
 var stability = 0;
+
+if (isGenetic == "on") {
+  genetic = true;
+}
 
 populationSize = popSize;
 lightAbsorption = gamma;
@@ -143,7 +148,7 @@ function setup() {
     for (var i = 0; i < totalCities; i++) {
       var v = createVector(
         random((width / 5) * 2 + 20),
-        random((height / 5) * 3) + 100
+        random((height / 5) * 3) + 50
       );
       cities[i] = v;
       order1[i] = i;
@@ -236,21 +241,22 @@ function draw() {
   }
 
   textSize(18);
-  text("Global Best: " + s2, 20, height - 70);
+  textWrap(CHAR);
+  text("Global Best: " + s2, 20, height - 70, windowWidth / 2 - 50);
   textSize(18);
-  text("Local Best: " + s1, 20, height - 45);
+  if (totalCities < 23) text("Local Best: " + s1, 20, height - 30);
   textSize(28);
   fill(255, 0, 0);
-  text("Brute Force", 20, height - 10);
+  text("Brute Force", 20, height);
 
   //--------------------Firefly Algorithm---------------------------
   stroke(255, 255, 255);
   strokeWeight(1);
   noFill();
   for (var i = 0; i < totalCities; i++) {
-    ellipse(cities[i].x + 1000, cities[i].y, 10, 10);
+    ellipse(cities[i].x + windowWidth / 2, cities[i].y, 10, 10);
     textSize(18);
-    text(i, cities[i].x + 1000, cities[i].y, 70, 80);
+    text(i, cities[i].x + windowWidth / 2, cities[i].y, 70, 80);
   }
 
   stroke(0, 255, 0);
@@ -259,7 +265,7 @@ function draw() {
   beginShape();
   for (var i = 0; i < totalCities; i++) {
     var n = bestEver[i];
-    vertex(cities[n].x + 1000, cities[n].y);
+    vertex(cities[n].x + windowWidth / 2, cities[n].y);
   }
   endShape();
 
@@ -269,7 +275,7 @@ function draw() {
   beginShape();
   for (var i = 0; i < currentCombination.length; i++) {
     var n = currentCombination[i];
-    vertex(cities[n].x + 1000, cities[n].y);
+    vertex(cities[n].x + windowWidth / 2, cities[n].y);
   }
   endShape();
 
@@ -282,12 +288,12 @@ function draw() {
     s2 += bestEver[i] + ",";
   }
   fill(255);
-  text("Global Best: " + s2, 1000, height - 80);
+  text("Global Best: " + s2, windowWidth / 2, height - 90, windowWidth / 2);
   textSize(18);
-  text("Local Best: " + s1, 1000, height - 50);
+  if (totalCities < 23) text("Local Best: " + s1, windowWidth / 2, height - 50);
   textSize(25);
   fill(0, 255, 0);
-  text("FireFly Algorithm", 1000, height - 10);
+  text("FireFly Algorithm", windowWidth / 2, height - 15);
 
   FireFly();
 

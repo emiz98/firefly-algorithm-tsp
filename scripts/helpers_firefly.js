@@ -88,10 +88,10 @@ function getBrightestFirefly() {
     if (d < recordDistance) {
       recordDistance = d;
       bestEver = population[i].slice();
-      reShufflePopulation();
+      stability = 0;
     } else {
       stability++;
-      reShufflePopulation();
+      if (genetic == true) reShufflePopulation();
     }
   }
 }
@@ -117,6 +117,7 @@ function calculateFitness(order) {
   return fitnessEUC;
 }
 
+//Genetic Algorithm
 function normalizeFitness() {
   var sum = 0;
   for (var i = 0; i < nextPopulationFitness.length; i++) {
@@ -138,7 +139,6 @@ function reShufflePopulation() {
 function nextGenerationGenetic() {
   var geneticPopulation = [];
   for (var i = 0; i < populationSize; i++) {
-    // var order = pickOne(nextPopulation, nextPopulationFitness);
     var orderA = pickOne(nextPopulation, nextPopulationFitness);
     var orderB = pickOne(nextPopulation, nextPopulationFitness);
     var order = crossOver(orderA, orderB);
