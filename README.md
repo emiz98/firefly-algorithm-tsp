@@ -1,6 +1,6 @@
 # Evolutionary Discrete Firefly Algorithm for Traveling Salesman Problem
 
-## This is an implementation done by me using JavaScript and P5.
+## This is an implementation done using JavaScript and P5.
 
 #### The paper that was related to this implementation was published by Gilang Kusuma Jati and Suyanto.
 
